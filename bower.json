@@ -6,6 +6,6 @@
     "Jesus Merino Parra <jmmerino@gmail.com>"
   ],
   "description": "A super simple notification system for jQuery. The original author is http://thrivingkings.com/sticky",
-  "main": "sticky.js",
+  "main": "jquey.notification.sticky.js",
   "license": "MIT"
 }
