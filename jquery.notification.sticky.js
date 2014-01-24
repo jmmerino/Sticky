@@ -1,8 +1,15 @@
-// Sticky v1.0 by Daniel Raftery
+// Sticky v1.1 by Daniel Raftery
 // http://thrivingkings.com/sticky
 //
 // http://twitter.com/ThrivingKings
-
+// 
+// 
+// 
+// Changelog:
+// 
+// v1.1 by Jesús Merino
+// - Added close_img_source as an option to change the source of the close image or to disable it. 
+// 
 (function( $ )
 	{
 	
@@ -12,13 +19,14 @@
 	$.fn.sticky = function(note, options, callback) 
 		{
 		// Default settings
-		var position = 'top-right'; // top-left, top-right, bottom-left, or bottom-right
+		var position = 'bottom-right'; // top-left, top-right, bottom-left, or bottom-right
 		
 		var settings =
 			{
 			'speed'			:	'fast',	 // animations: fast, slow, or integer
 			'duplicates'	:	true,  // true or false
-			'autoclose'		:	5000  // integer or false
+			'autoclose'		:	5000,  // integer or false
+			'close_img_source': 'close.png' //Source of the close img button. If source, then no image. 
 			};
 		
 		// Passing in the object instead of specifying a note
@@ -57,7 +65,9 @@
 			{
 			// Building and inserting sticky note
 			$('.sticky-queue').prepend('<div class="sticky border-' + position + '" id="' + uniqID + '"></div>');
-			$('#' + uniqID).append('<img src="close.png" class="sticky-close" rel="' + uniqID + '" title="Close" />');
+			if (settings['close_img_source']){
+				$('#' + uniqID).append('<img src="' + settings['close_img_source'] + '" class="sticky-close" rel="' + uniqID + '" title="Close" />');	
+			}			
 			$('#' + uniqID).append('<div class="sticky-note" rel="' + uniqID + '">' + note + '</div>');
 			
 			// Smoother animation
